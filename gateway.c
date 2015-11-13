@@ -3,8 +3,7 @@
 #include <linux/netfilter.h>
 #include <linux/netfilter_ipv4.h>
 #include <linux/init.h>
-#include <inttypes.h>
-#include <ams-generic/types.h>
+#include <asm-generic/types.h>
 #include <net/checksum.h>
 
 

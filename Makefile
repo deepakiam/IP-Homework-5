@@ -1,5 +1,5 @@
-obj-m	+=	gatewaymodule.o
-gatemodule-objs := gateway.o
+obj-m	+=	gateway.o
+#gatemodule-objs := gateway.o
 
 KDIR	:=	/lib/modules/$(shell uname -r)/build
 pwd	:=	$(shell pwd)
