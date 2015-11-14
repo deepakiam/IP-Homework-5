@@ -13,6 +13,9 @@
 #include <asm-generic/types.h>
 #include <net/checksum.h>
 
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("linux-simple-firewall");
+MODULE_AUTHOR("dnair");
 
 static struct nf_hook_ops nfho;         
 struct sk_buff *sock_buff;	//current buffer
