@@ -36,22 +36,24 @@ unsigned int main_hook(unsigned int hooknum,
 {
 	//printk(KERN_INFO "in hook function\n");
 	if (in) {
-	printk(KERN_INFO "in hai\n");
 	if(strcmp(in->name,allow) == 0){ return NF_ACCEPT; }
-	if(strcmp(in->name,internal) == 0){ return NF_ACCEPT; }
+	//if(strcmp(in->name,internal) == 0){ return NF_ACCEPT; }
   	if(strcmp(in->name,interface) == 0)
 	{ 
-	  return NF_ACCEPT;//return NF_DROP; 
+	  return NF_DROP; 
 	}    
     printk(KERN_INFO "in hook function\n");
+	//	return NF_ACCEPT;
   	sock_buff = *skb;
 	ip_header = (struct iphdr *)skb_network_header(sock_buff);	//extract ip_header
+		printk(KERN_INFO "extracted header\n");
+			return NF_ACCEPT;
   	if(!sock_buff)
 	{ 
 		return NF_ACCEPT; 
 	}                   
-  //if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
-  //if(sock_buff->nh.iph->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
+  	//if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
+  	//if(sock_buff->nh.iph->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
                 
   	printk(KERN_INFO "a legit packet\n");
 	if(ip_header->protocol != 17)
