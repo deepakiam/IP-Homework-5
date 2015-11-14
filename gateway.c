@@ -4,7 +4,7 @@
 #include <linux/netdevice.h>      
 #include <linux/skbuff.h>         
 #include <linux/udp.h>          
-
+#include <linux/tcp.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/netfilter.h>
@@ -34,6 +34,7 @@ unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const 
 	unsigned short ip_len;
 	struct sockaddr_in src_addr;
 	struct udphdr *udp_header;
+	struct tcphdr *tcp_header;
 	
 	//extract header info on incoming pkt
 	
@@ -58,7 +59,6 @@ unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const 
 	
 	unsigned int sip = (unsigned int)ip_header->saddr;
 	unsigned int dip = (unsigned int)ip_header->daddr;
-	unsigned int prot = (unsigned int)ip_header->protocol;
 	unsigned int sport = 0;
 	unsigned int dport = 0;
 	
@@ -72,7 +72,7 @@ unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const 
        dport = (unsigned int)ntohs(tcp_header->dest);
    }
 	
-	printk(KERN_INFO "OUT packet info: src ip: %u, src port: %u; dest ip: %u, dest port: %u; proto: %u\n", src_ip, src_port, dest_ip, dest_port, ip_header->protocol);
+	printk(KERN_INFO "OUT packet info: src ip: %u, src port: %u; dest ip: %u, dest port: %u; proto: %u\n", sip, sport, dip, dport, ip_header->protocol);
 	
 	//determine the class of packet from source
 	char incoming_addr[16] ;
