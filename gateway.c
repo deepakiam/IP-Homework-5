@@ -21,7 +21,7 @@ struct iphdr *ip_header;	//ip header pointer
 char * parseIPV4(char* ipAddress, int arr[4]);
 int isInRange(char *start, char *end, char *check);
 int init_module();
-int cleanup_module();
+void cleanup_module();
 
 unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const struct net_device *in, const struct net_device *out, int (*okfn)(struct sk_buff *))
 {
