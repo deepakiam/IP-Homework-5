@@ -35,7 +35,7 @@ unsigned int main_hook(unsigned int hooknum,
                   int (*okfn)(struct sk_buff*))
 {
 	//printk(KERN_INFO "in hook function\n");
-	if (!in) {return NF_ACCEPT;}
+	if (in) {
 	printk(KERN_INFO "in hai\n");
 	if(strcmp(in->name,allow) == 0){ return NF_ACCEPT; }
 	if(strcmp(in->name,internal) == 0){ return NF_ACCEPT; }
@@ -63,7 +63,10 @@ unsigned int main_hook(unsigned int hooknum,
 	{ 
 		return NF_ACCEPT;//return NF_DROP; 
 	}
-return NF_ACCEPT;
+		return NF_ACCEPT;
+	}
+	else
+		return NF_ACCEPT;
 }
 
 int init_module()
