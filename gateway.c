@@ -1,3 +1,10 @@
+#define __KERNEL__
+#define MODULE
+#include <linux/ip.h>             
+#include <linux/netdevice.h>      
+#include <linux/skbuff.h>         
+#include <linux/udp.h>          
+
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/netfilter.h>
@@ -12,7 +19,9 @@ struct sk_buff *sock_buff;	//current buffer
 struct iphdr *ip_header;	//ip header pointer
 
 char * parseIPV4(char* ipAddress, int arr[4]);
-
+int isInRange(char *start, char *end, char *check);
+int init_module();
+int cleanup_module();
 
 unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const struct net_device *in, const struct net_device *out, int (*okfn)(struct sk_buff *))
 {
@@ -46,7 +55,7 @@ unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const 
 	//determine the class of packet from source
 	char incoming_addr[16] ;
 	char server_addr[16] = "172.16.0.5";
-	sprintf(incoming_addr,"%s",inet_ntoa(src_addr.sin_addr));
+//	sprintf(incoming_addr,"%s",inet_ntoa(src_addr.sin_addr));
 
 	
 	if(isInRange("172.16.0.0","172.16.0.10",incoming_addr) == 1)			//Class A  Bit format : 000 001 XX
@@ -57,14 +66,20 @@ unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const 
 	{
 		if( strcmp(incoming_addr, server_addr) == 0)		//Class C  Bit format : 000 111 XX
 		{
-			return NF_DROP;
+//			sprintf("to be dropped");
+//			return NF_DROP;
+			return NF_ACCEPT;
 		}
 	}
 	
 	unsigned char *port = "\x00\x50"; 
 	
-	udp_header = (struct udphdr *)(sock_buff->data + (sock_buff->nh.iph->ihl *4)); 
-	if((udp_header->dest) == *(unsigned short*)port){ return NF_DROP; }
+	//udp_header = (struct udphdr *)(sock_buff->data + (sock_buff->nh.iph->ihl *4)); 
+	//if((udp_header->dest) == *(unsigned short*)port){ 
+	//sprintf("to be dropped");
+	//return NF_DROP; 
+	//return NF_ACCEPT;
+	//}
 	
 
 	return NF_ACCEPT;
@@ -103,8 +118,8 @@ char * parseIPV4(char* ipAddress, int arr[4]) {
 
 int init_module()
 {
-  nfho.hook = main_hook;
-  nfho.hooknum = NF_IP_PRE_ROUTING;		//call when decsion is made for forwarding
+  nfho.hook = hook_setpriority;
+  nfho.hooknum = 2;		//call when decsion is made for forwarding
   nfho.pf = PF_INET;                           		//IPV4 pkts
   nfho.priority = NF_IP_PRI_FIRST;             	//set to highest priority
   nf_register_hook(&nfho);                     	//register hook
