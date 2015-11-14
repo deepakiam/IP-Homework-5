@@ -34,22 +34,38 @@ unsigned int main_hook(unsigned int hooknum,
                   const struct net_device *out,
                   int (*okfn)(struct sk_buff*))
 {
+	//printk(KERN_INFO "in hook function\n");
+	if (!in) {return NF_ACCEPT;}
+	printk(KERN_INFO "in hai\n");
 	if(strcmp(in->name,allow) == 0){ return NF_ACCEPT; }
 	if(strcmp(in->name,internal) == 0){ return NF_ACCEPT; }
-  if(strcmp(in->name,interface) == 0){ return NF_ACCEPT;//return NF_DROP; }    
-        printk(KERN_INFO "in hook function\n");
-  sock_buff = *skb;
+  	if(strcmp(in->name,interface) == 0)
+	{ 
+	  return NF_ACCEPT;//return NF_DROP; 
+	}    
+    printk(KERN_INFO "in hook function\n");
+  	sock_buff = *skb;
 	ip_header = (struct iphdr *)skb_network_header(sock_buff);	//extract ip_header
-  if(!sock_buff){ return NF_ACCEPT; }                   
+  	if(!sock_buff)
+	{ 
+		return NF_ACCEPT; 
+	}                   
   //if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
   //if(sock_buff->nh.iph->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
                 
-  printk(KERN_INFO "a legit packet\n");
-if(ip_header->protocol != 17){ return NF_ACCEPT; }                 
-udp_header = (struct udphdr *)(sock_buff->data + (ip_header->ihl *4)); 
-if((udp_header->dest) == *(unsigned short*)port){ return NF_ACCEPT;//return NF_DROP; }
+  	printk(KERN_INFO "a legit packet\n");
+	if(ip_header->protocol != 17)
+	{ 
+		return NF_ACCEPT; 
+	}                 
+	udp_header = (struct udphdr *)(sock_buff->data + (ip_header->ihl *4)); 
+	if((udp_header->dest) == *(unsigned short*)port)
+	{ 
+		return NF_ACCEPT;//return NF_DROP; 
+	}
 return NF_ACCEPT;
 }
+
 int init_module()
 {
 		printk(KERN_INFO "initialize kernel module\n");
@@ -61,4 +77,7 @@ int init_module()
         
 return 0;
 }
-void cleanup_module() { nf_unregister_hook(&netfilter_ops); }
+void cleanup_module() 
+{
+	nf_unregister_hook(&netfilter_ops); 
+}
