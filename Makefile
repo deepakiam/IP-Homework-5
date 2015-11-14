@@ -1,4 +1,4 @@
-obj-m	+=	gateway.o
+obj-m	+=	firewall.o
 #gatemodule-objs := gateway.o
 
 KDIR	:=	/lib/modules/$(shell uname -r)/build
