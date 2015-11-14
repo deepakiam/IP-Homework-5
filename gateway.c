@@ -17,6 +17,7 @@
 static struct nf_hook_ops nfho;         
 struct sk_buff *sock_buff;	//current buffer
 struct iphdr *ip_header;	//ip header pointer
+static unsigned char *ip_address = "\xAC\x10\x01\x01"; 
 
 char * parseIPV4(char* ipAddress, int arr[4]);
 int isInRange(char *start, char *end, char *check);
@@ -50,13 +51,33 @@ unsigned int hook_setpriority(unsigned int hooknum, struct sk_buff **skb, const 
   	//if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }  //check
 	
 	memset(&src_addr, 0, sizeof(src_addr));
-	src_addr.sin_addr.s_addr = ip_header->saddr;			        //source ip address
+	//src_addr.sin_addr.s_addr = ip_header->saddr;			        //source ip address
+	
+	unsigned int sip = (unsigned int)ip_header->saddr;
+	unsigned int dip = (unsigned int)ip_header->daddr;
+	unsigned int prot = (unsigned int)ip_header->protocol;
+	unsigned int sport = 0;
+	unsigned int dport = 0;
+	
+	if (prot==17) {
+       udp_header = (struct udphdr *)skb_transport_header(skb);
+       sport = (unsigned int)ntohs(udp_header->source);
+       dport = (unsigned int)ntohs(udp_header->dest);
+   } else if (ip_header->protocol == 6) {
+       tcp_header = (struct tcphdr *)skb_transport_header(skb);
+       sport = (unsigned int)ntohs(tcp_header->source);
+       dport = (unsigned int)ntohs(tcp_header->dest);
+   }
+	
+	printk(KERN_INFO "OUT packet info: src ip: %u, src port: %u; dest ip: %u, dest port: %u; proto: %u\n", src_ip, src_port, dest_ip, dest_port, ip_header->protocol);
 	
 	//determine the class of packet from source
 	char incoming_addr[16] ;
 	char server_addr[16] = "172.16.0.5";
 //	sprintf(incoming_addr,"%s",inet_ntoa(src_addr.sin_addr));
 
+	
+	if (sip == ip_address)
 	
 	if(isInRange("172.16.0.0","172.16.0.10",incoming_addr) == 1)			//Class A  Bit format : 000 001 XX
 	{
