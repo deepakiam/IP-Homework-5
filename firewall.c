@@ -29,7 +29,7 @@ unsigned char *port = "\x00\x17";
 struct sk_buff *sock_buff;                              
 struct udphdr *udp_header;                              
 unsigned int main_hook(unsigned int hooknum,
-                  struct sk_buff *skb,
+                  struct sk_buff **skb,
                   const struct net_device *in,
                   const struct net_device *out,
                   int (*okfn)(struct sk_buff*))
@@ -58,12 +58,12 @@ unsigned int main_hook(unsigned int hooknum,
   	//if(sock_buff->nh.iph->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
                 
   	printk(KERN_INFO "a legit packet\n");
-	#if(sock_buff->nh.iph->protocol != 17)
+	//if(sock_buff->nh.iph->protocol != 17)
 	if(ip_header->protocol != 17)
 	{ 
 		return NF_ACCEPT; 
 	}                 
-	#udp_header = (struct udphdr *)(sock_buff->data + (sock_buff->nh.iph->ihl *4)); 
+	//udp_header = (struct udphdr *)(sock_buff->data + (sock_buff->nh.iph->ihl *4)); 
 	udp_header = (struct udphdr *)(sock_buff->data + (ip_header->ihl *4)); 
 	if((udp_header->dest) == *(unsigned short*)port)
 	{ 
