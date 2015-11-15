@@ -31,6 +31,7 @@ unsigned char *htport = "\x00\x50";
 struct sk_buff *sock_buff;                              
 struct udphdr *udp_header;    
 struct tcphdr *tcp_header;
+struct icmphdr *icmp_header;
 unsigned int main_hook(unsigned int hooknum,
                   struct sk_buff *skb,
                   const struct net_device *in,
@@ -67,14 +68,15 @@ unsigned int main_hook(unsigned int hooknum,
                 
   	if(ip_header->protocol == 1)
 	{
+		icmp_header = (struct icmphdr *)((__u32 *)ip_header + ip_header->ihl);
 		if ((ip_header->daddr) == *(unsigned int*)sip_address)
 		{
-			printk(KERN_INFO "ping to server %d\n", ip_header->daddr); 
+			printk(KERN_INFO "ping to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
 			return NF_ACCEPT;
 		}
 		else
 		{
-			printk(KERN_INFO "ping to other %d\n", ip_header->daddr); 
+			printk(KERN_INFO "ping to other %d of type %d\n", ip_header->daddr, icmp_header->type); 
 			return NF_DROP;
 		}
 	}
