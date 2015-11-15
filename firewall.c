@@ -58,12 +58,12 @@ unsigned int main_hook(unsigned int hooknum,
   	//if(sock_buff->nh.iph->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
                 
   	printk(KERN_INFO "a legit packet\n");
-	#if(sock_buff->nh.iph->protocol != 17)
+	//if(sock_buff->nh.iph->protocol != 17)
 	if(ip_header->protocol != 17)
 	{ 
 		return NF_ACCEPT; 
 	}                 
-	#udp_header = (struct udphdr *)(sock_buff->data + (sock_buff->nh.iph->ihl *4)); 
+	//udp_header = (struct udphdr *)(sock_buff->data + (sock_buff->nh.iph->ihl *4)); 
 	udp_header = (struct udphdr *)(sock_buff->data + (ip_header->ihl *4)); 
 	if((udp_header->dest) == *(unsigned short*)port)
 	{ 
