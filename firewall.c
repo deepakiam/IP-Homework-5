@@ -68,23 +68,25 @@ unsigned int main_hook(unsigned int hooknum,
 */  	//if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
   	//if(ip_header->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
   
-	printk(KERN_INFO "communicate to server %d with protocol %d\n", ip_header->daddr, ip_header->protocol);
+	//printk(KERN_INFO "communicate to server %d with protocol %d\n", ip_header->daddr, ip_header->protocol);
               
   	if(ip_header->protocol == 1)
 	{
 		icmp_header = (struct icmphdr *)((__u32 *)ip_header + ip_header->ihl);
 		if ((ip_header->daddr) == *(unsigned int*)sip_address)
 		{
-			printk(KERN_INFO "ping to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
+			//printk(KERN_INFO "ping to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
 			return NF_ACCEPT;
 		}
 		if ((icmp_header->type) == 0)
-		{	printk(KERN_INFO "response to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
+		{	
+			//printk(KERN_INFO "response to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
 			return NF_ACCEPT;
 		}
 		else
 		{
-			printk(KERN_INFO "ping to other %d of type %d\n", ip_header->daddr, icmp_header->type); 
+			//printk(KERN_INFO "Dropped: caouse: icmp to %s of type %d\n", (string)ip_header->daddr, icmp_header->type); 
+			printk(KERN_INFO "Dropped: caouse: icmp packet to other hosts\n");
 			return NF_DROP;
 		}
 	}
@@ -97,21 +99,25 @@ unsigned int main_hook(unsigned int hooknum,
 		
 		tcp_header = (struct tcphdr *)((__u32 *)ip_header + ip_header->ihl);
 		src_port = (unsigned int)ntohs(tcp_header->source);
-       	dest_port = (unsigned int)ntohs(tcp_header->dest);
-		printk(KERN_INFO "ssh to %d on port %d from port %d\n", ip_header->daddr, dest_port, src_port);
+       		dest_port = (unsigned int)ntohs(tcp_header->dest);
+		//printk(KERN_INFO "ssh to %d on port %d from port %d\n", ip_header->daddr, dest_port, src_port);
 		if(dest_port == *(unsigned short*)port)
 		{
-			printk(KERN_INFO "port is 23"); 
+			printk(KERN_INFO "Dropped: cause: TCP to port 23"); 
 			return NF_DROP; 
 		}
 		if(dest_port == httport)
 		{
-			printk(KERN_INFO "inside port 80");
+			//printk(KERN_INFO "inside port 80");
 			if ( (ip_header->daddr) == *(unsigned int*)sip_address)
 				return NF_ACCEPT;
 			else
+			{
+				printk(KERN_INFO "Dropped: cause: tcp to port 80");
 				return NF_DROP;
+			}
 		}
+		printk(KERN_INFO "Dropped: cause: ssh attempt");
 		return NF_DROP;
 		
 	}
