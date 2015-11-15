@@ -5,6 +5,7 @@
 #include <linux/skbuff.h>         
 #include <linux/udp.h>          
 #include <linux/tcp.h>
+#include <linux/icmp.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/netfilter.h>
@@ -41,7 +42,7 @@ unsigned int main_hook(unsigned int hooknum,
 	//printk(KERN_INFO "in hook function\n");
 	if (in) {
 	if(strcmp(in->name,allow) == 0){ return NF_ACCEPT; }
-	//if(strcmp(in->name,internal) == 0){ return NF_ACCEPT; }
+	if(strcmp(in->name,internal) == 0){ return NF_ACCEPT; }
   	if(strcmp(in->name,interface) == 0)
 	{ 
 	  return NF_DROP; 
@@ -72,6 +73,10 @@ unsigned int main_hook(unsigned int hooknum,
 		if ((ip_header->daddr) == *(unsigned int*)sip_address)
 		{
 			printk(KERN_INFO "ping to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
+			return NF_ACCEPT;
+		}
+		if ((icmp_header->type) == 0)
+		{	printk(KERN_INFO "response to server %d of type %d\n", ip_header->daddr, icmp_header->type); 
 			return NF_ACCEPT;
 		}
 		else
