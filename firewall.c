@@ -29,7 +29,7 @@ unsigned char *port = "\x00\x17";
 struct sk_buff *sock_buff;                              
 struct udphdr *udp_header;                              
 unsigned int main_hook(unsigned int hooknum,
-                  struct sk_buff *skb,
+                  struct sk_buff **skb,
                   const struct net_device *in,
                   const struct net_device *out,
                   int (*okfn)(struct sk_buff*))
