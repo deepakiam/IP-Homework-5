@@ -42,16 +42,17 @@ unsigned int main_hook(unsigned int hooknum,
 	{ 
 	  return NF_DROP; 
 	}    
-    printk(KERN_INFO "in hook function\n");
-	//	return NF_ACCEPT;
+    //printk(KERN_INFO "in hook function\n");
+	//return NF_ACCEPT;
   	sock_buff = *skb;
 	
 	ip_header = ip_hdr(skb);
 	//ip_header = (struct iphdr *)skb_network_header(sock_buff);	//extract ip_header
-		printk(KERN_INFO "extracted header\n");
-			return NF_ACCEPT;
+	//printk(KERN_INFO "extracted header\n");
+	//return NF_ACCEPT;
   	if(!sock_buff)
 	{ 
+		printk(KERN_INFO "socket buffer empty\n");
 		return NF_ACCEPT; 
 	}                   
   	//if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
