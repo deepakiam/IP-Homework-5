@@ -1,0 +1,657 @@
+[    0.000000] Initializing cgroup subsys cpuset
+[    0.000000] Initializing cgroup subsys cpu
+[    0.000000] Linux version 2.6.32-5-amd64 (Debian 2.6.32-41) (ben@decadent.org.uk) (gcc version 4.3.5 (Debian 4.3.5-4) ) #1 SMP Mon Jan 16 16:22:28 UTC 2012
+[    0.000000] Command line: root=/dev/vda console=ttyS0
+[    0.000000] KERNEL supported cpus:
+[    0.000000]   Intel GenuineIntel
+[    0.000000]   AMD AuthenticAMD
+[    0.000000]   Centaur CentaurHauls
+[    0.000000] BIOS-provided physical RAM map:
+[    0.000000]  BIOS-e820: 0000000000000000 - 000000000009dc00 (usable)
+[    0.000000]  BIOS-e820: 000000000009dc00 - 00000000000a0000 (reserved)
+[    0.000000]  BIOS-e820: 00000000000f0000 - 0000000000100000 (reserved)
+[    0.000000]  BIOS-e820: 0000000000100000 - 000000001fffd000 (usable)
+[    0.000000]  BIOS-e820: 000000001fffd000 - 0000000020000000 (reserved)
+[    0.000000]  BIOS-e820: 00000000fffbc000 - 0000000100000000 (reserved)
+[    0.000000] DMI 2.4 present.
+[    0.000000] last_pfn = 0x1fffd max_arch_pfn = 0x400000000
+[    0.000000] MTRR default type: write-back
+[    0.000000] MTRR fixed ranges enabled:
+[    0.000000]   00000-9FFFF write-back
+[    0.000000]   A0000-BFFFF uncachable
+[    0.000000]   C0000-FFFFF write-protect
+[    0.000000] MTRR variable ranges enabled:
+[    0.000000]   0 base 0000E0000000 mask 3FFFE0000000 uncachable
+[    0.000000]   1 disabled
+[    0.000000]   2 disabled
+[    0.000000]   3 disabled
+[    0.000000]   4 disabled
+[    0.000000]   5 disabled
+[    0.000000]   6 disabled
+[    0.000000]   7 disabled
+[    0.000000] PAT not supported by CPU.
+[    0.000000] initial memory mapped : 0 - 20000000
+[    0.000000] init_memory_mapping: 0000000000000000-000000001fffd000
+[    0.000000]  0000000000 - 001fe00000 page 2M
+[    0.000000]  001fe00000 - 001fffd000 page 4k
+[    0.000000] kernel direct mapping tables up to 1fffd000 @ 8000-b000
+[    0.000000] RAMDISK: 1f631000 - 1ffef6ab
+[    0.000000] ACPI: RSDP 00000000000fda00 00014 (v00 BOCHS )
+[    0.000000] ACPI: RSDT 000000001fffd6e0 00034 (v01 BOCHS  BXPCRSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: FACP 000000001ffffe40 00074 (v01 BOCHS  BXPCFACP 00000001 BXPC 00000001)
+[    0.000000] ACPI: DSDT 000000001fffd900 024F1 (v01   BXPC   BXDSDT 00000001 INTL 20090123)
+[    0.000000] ACPI: FACS 000000001ffffe00 00040
+[    0.000000] ACPI: SSDT 000000001fffd860 0009E (v01 BOCHS  BXPCSSDT 00000001 BXPC 00000001)
+[    0.000000] ACPI: APIC 000000001fffd770 00078 (v01 BOCHS  BXPCAPIC 00000001 BXPC 00000001)
+[    0.000000] ACPI: SSDT 000000001fffd720 0004E (v01   BXPC BXSSDTPC 00000001 INTL 20090123)
+[    0.000000] ACPI: Local APIC address 0xfee00000
+[    0.000000] No NUMA configuration found
+[    0.000000] Faking a node at 0000000000000000-000000001fffd000
+[    0.000000] Bootmem setup node 0 0000000000000000-000000001fffd000
+[    0.000000]   NODE_DATA [0000000000009000 - 0000000000010fff]
+[    0.000000]   bootmap [0000000000011000 -  0000000000014fff] pages 4
+[    0.000000] (7 early reservations) ==> bootmem [0000000000 - 001fffd000]
+[    0.000000]   #0 [0000000000 - 0000001000]   BIOS data page ==> [0000000000 - 0000001000]
+[    0.000000]   #1 [0000006000 - 0000008000]       TRAMPOLINE ==> [0000006000 - 0000008000]
+[    0.000000]   #2 [0001000000 - 00016d95c4]    TEXT DATA BSS ==> [0001000000 - 00016d95c4]
+[    0.000000]   #3 [001f631000 - 001ffef6ab]          RAMDISK ==> [001f631000 - 001ffef6ab]
+[    0.000000]   #4 [000009dc00 - 0000100000]    BIOS reserved ==> [000009dc00 - 0000100000]
+[    0.000000]   #5 [00016da000 - 00016da079]              BRK ==> [00016da000 - 00016da079]
+[    0.000000]   #6 [0000008000 - 0000009000]          PGTABLE ==> [0000008000 - 0000009000]
+[    0.000000] found SMP MP-table at [ffff8800000fda50] fda50
+[    0.000000] kvm-clock: cpu 0, msr 0:151a701, boot clock
+[    0.000000]  [ffffea0000000000-ffffea00007fffff] PMD -> [ffff880001c00000-ffff8800023fffff] on node 0
+[    0.000000] Zone PFN ranges:
+[    0.000000]   DMA      0x00000000 -> 0x00001000
+[    0.000000]   DMA32    0x00001000 -> 0x00100000
+[    0.000000]   Normal   0x00100000 -> 0x00100000
+[    0.000000] Movable zone start PFN for each node
+[    0.000000] early_node_map[2] active PFN ranges
+[    0.000000]     0: 0x00000000 -> 0x0000009d
+[    0.000000]     0: 0x00000100 -> 0x0001fffd
+[    0.000000] On node 0 totalpages: 130970
+[    0.000000]   DMA zone: 56 pages used for memmap
+[    0.000000]   DMA zone: 102 pages reserved
+[    0.000000]   DMA zone: 3839 pages, LIFO batch:0
+[    0.000000]   DMA32 zone: 1736 pages used for memmap
+[    0.000000]   DMA32 zone: 125237 pages, LIFO batch:31
+[    0.000000] ACPI: PM-Timer IO Port: 0xb008
+[    0.000000] ACPI: Local APIC address 0xfee00000
+[    0.000000] ACPI: LAPIC (acpi_id[0x00] lapic_id[0x00] enabled)
+[    0.000000] ACPI: LAPIC_NMI (acpi_id[0xff] dfl dfl lint[0x1])
+[    0.000000] ACPI: IOAPIC (id[0x00] address[0xfec00000] gsi_base[0])
+[    0.000000] IOAPIC[0]: apic_id 0, version 17, address 0xfec00000, GSI 0-23
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 0 global_irq 2 dfl dfl)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 5 global_irq 5 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 9 global_irq 9 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 10 global_irq 10 high level)
+[    0.000000] ACPI: INT_SRC_OVR (bus 0 bus_irq 11 global_irq 11 high level)
+[    0.000000] ACPI: IRQ0 used by override.
+[    0.000000] ACPI: IRQ2 used by override.
+[    0.000000] ACPI: IRQ5 used by override.
+[    0.000000] ACPI: IRQ9 used by override.
+[    0.000000] ACPI: IRQ10 used by override.
+[    0.000000] ACPI: IRQ11 used by override.
+[    0.000000] Using ACPI (MADT) for SMP configuration information
+[    0.000000] SMP: Allowing 1 CPUs, 0 hotplug CPUs
+[    0.000000] nr_irqs_gsi: 24
+[    0.000000] PM: Registered nosave memory: 000000000009d000 - 000000000009e000
+[    0.000000] PM: Registered nosave memory: 000000000009e000 - 00000000000a0000
+[    0.000000] PM: Registered nosave memory: 00000000000a0000 - 00000000000f0000
+[    0.000000] PM: Registered nosave memory: 00000000000f0000 - 0000000000100000
+[    0.000000] Allocating PCI resources starting at 20000000 (gap: 20000000:dffbc000)
+[    0.000000] Booting paravirtualized kernel on KVM
+[    0.000000] NR_CPUS:512 nr_cpumask_bits:512 nr_cpu_ids:1 nr_node_ids:1
+[    0.000000] PERCPU: Embedded 30 pages/cpu @ffff880001800000 s90328 r8192 d24360 u2097152
+[    0.000000] pcpu-alloc: s90328 r8192 d24360 u2097152 alloc=1*2097152
+[    0.000000] pcpu-alloc: [0] 0 
+[    0.000000] kvm-clock: cpu 0, msr 0:1815701, primary cpu clock
+[    0.000000] Built 1 zonelists in Node order, mobility grouping on.  Total pages: 129076
+[    0.000000] Policy zone: DMA32
+[    0.000000] Kernel command line: root=/dev/vda console=ttyS0
+[    0.000000] PID hash table entries: 2048 (order: 2, 16384 bytes)
+[    0.000000] Initializing CPU#0
+[    0.000000] Checking aperture...
+[    0.000000] No AGP bridge found
+[    0.000000] Calgary: detecting Calgary via BIOS EBDA area
+[    0.000000] Calgary: Unable to locate Rio Grande table in EBDA - bailing!
+[    0.000000] Memory: 498260k/524276k available (3083k kernel code, 396k absent, 25620k reserved, 2048k data, 592k init)
+[    0.000000] SLUB: Genslabs=14, HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] Hierarchical RCU implementation.
+[    0.000000] NR_IRQS:4352 nr_irqs:256
+[    0.000000] Console: colour VGA+ 80x25
+[    0.000000] console [ttyS0] enabled
+[    0.000000] Detected 1999.999 MHz processor.
+[    0.008000] Calibrating delay loop (skipped) preset value.. 3999.99 BogoMIPS (lpj=7999996)
+[    0.008000] Security Framework initialized
+[    0.008000] SELinux:  Disabled at boot.
+[    0.008000] Dentry cache hash table entries: 65536 (order: 7, 524288 bytes)
+[    0.008000] Inode-cache hash table entries: 32768 (order: 6, 262144 bytes)
+[    0.008000] Mount-cache hash table entries: 256
+[    0.008463] Initializing cgroup subsys ns
+[    0.008903] Initializing cgroup subsys cpuacct
+[    0.009343] Initializing cgroup subsys devices
+[    0.009881] Initializing cgroup subsys freezer
+[    0.010395] Initializing cgroup subsys net_cls
+[    0.010882] CPU: L1 I cache: 32K, L1 D cache: 32K
+[    0.011371] CPU: L2 cache: 4096K
+[    0.011696] CPU 0/0x0 -> Node 0
+[    0.012007] mce: CPU supports 10 MCE banks
+[    0.012471] Performance Events: p6 PMU driver.
+[    0.012967] ... version:                0
+[    0.013362] ... bit width:              32
+[    0.013772] ... generic registers:      2
+[    0.014158] ... value mask:             00000000ffffffff
+[    0.014660] ... max period:             000000007fffffff
+[    0.015164] ... fixed-purpose events:   0
+[    0.015544] ... event mask:             0000000000000003
+[    0.016025] SMP alternatives: switching to UP code
+[    0.027229] Freeing SMP alternatives: 28k freed
+[    0.027706] ACPI: Core revision 20090903
+[    0.028904] Setting APIC routing to flat
+[    0.030476] ..TIMER: vector=0x30 apic1=0 pin1=2 apic2=-1 pin2=-1
+[    0.031123] CPU0: Intel QEMU Virtual CPU version (cpu64-rhel6) stepping 03
+[    0.036001] Brought up 1 CPUs
+[    0.036001] Total of 1 processors activated (3999.99 BogoMIPS).
+[    0.036001] CPU0 attaching NULL sched-domain.
+[    0.036001] devtmpfs: initialized
+[    0.036663] regulator: core version 0.5
+[    0.037149] NET: Registered protocol family 16
+[    0.037724] ACPI: bus type pci registered
+[    0.038261] PCI: Using configuration type 1 for base access
+[    0.039146] bio: create slab <bio-0> at 0
+[    0.039960] ACPI: EC: Look up EC in DSDT
+[    0.041632] ACPI: Interpreter enabled
+[    0.042092] ACPI: (supports S0 S5)
+[    0.042552] ACPI: Using IOAPIC for interrupt routing
+[    0.046545] ACPI: No dock devices found.
+[    0.047120] ACPI: PCI Root Bridge [PCI0] (0000:00)
+[    0.048450] pci 0000:00:01.1: reg 20 io port: [0xc000-0xc00f]
+[    0.048695] pci 0000:00:01.2: reg 20 io port: [0xc020-0xc03f]
+[    0.048982] pci 0000:00:01.3: quirk: region b000-b03f claimed by PIIX4 ACPI
+[    0.049812] pci 0000:00:01.3: quirk: region b100-b10f claimed by PIIX4 SMB
+[    0.052014] pci 0000:00:02.0: reg 10 32bit mmio pref: [0xf0000000-0xf1ffffff]
+[    0.052662] pci 0000:00:02.0: reg 14 32bit mmio: [0xf2000000-0xf2000fff]
+[    0.056004] pci 0000:00:02.0: reg 30 32bit mmio pref: [0xf2010000-0xf201ffff]
+[    0.056131] pci 0000:00:03.0: reg 10 io port: [0xc100-0xc1ff]
+[    0.056192] pci 0000:00:03.0: reg 14 32bit mmio: [0xf2020000-0xf20200ff]
+[    0.056306] pci 0000:00:03.0: reg 30 32bit mmio pref: [0xf2030000-0xf203ffff]
+[    0.056467] pci 0000:00:04.0: reg 10 io port: [0xc200-0xc23f]
+[    0.056500] pci 0000:00:04.0: reg 14 32bit mmio: [0xf2040000-0xf2040fff]
+[    0.056787] pci 0000:00:05.0: reg 10 io port: [0xc240-0xc25f]
+[    0.057123] ACPI: PCI Interrupt Routing Table [\_SB_.PCI0._PRT]
+[    0.062019] ACPI: PCI Interrupt Link [LNKA] (IRQs 5 *10 11)
+[    0.062878] ACPI: PCI Interrupt Link [LNKB] (IRQs 5 *10 11)
+[    0.063715] ACPI: PCI Interrupt Link [LNKC] (IRQs 5 10 *11)
+[    0.064278] ACPI: PCI Interrupt Link [LNKD] (IRQs 5 10 *11)
+[    0.065120] ACPI: PCI Interrupt Link [LNKS] (IRQs 9) *0
+[    0.065935] vgaarb: device added: PCI:0000:00:02.0,decodes=io+mem,owns=io+mem,locks=none
+[    0.066934] vgaarb: loaded
+[    0.067336] PCI: Using ACPI for IRQ routing
+[    0.068204] Switching to clocksource kvm-clock
+[    0.069724] pnp: PnP ACPI init
+[    0.070133] ACPI: bus type pnp registered
+[    0.071347] pnp: PnP ACPI: found 7 devices
+[    0.071879] ACPI: ACPI bus type pnp unregistered
+[    0.076372] pci_bus 0000:00: resource 0 io:  [0x00-0xffff]
+[    0.076375] pci_bus 0000:00: resource 1 mem: [0x000000-0xffffffffffffffff]
+[    0.076399] NET: Registered protocol family 2
+[    0.077004] IP route cache hash table entries: 4096 (order: 3, 32768 bytes)
+[    0.078448] TCP established hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.079403] TCP bind hash table entries: 16384 (order: 6, 262144 bytes)
+[    0.080240] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.081020] TCP reno registered
+[    0.081444] NET: Registered protocol family 1
+[    0.081974] pci 0000:00:00.0: Limiting direct PCI/PCI transfers
+[    0.082690] pci 0000:00:01.0: PIIX3: Enabling Passive Release
+[    0.083385] pci 0000:00:01.0: Activating ISA DMA hang workarounds
+[    0.084194] pci 0000:00:02.0: Boot video device
+[    0.084231] Unpacking initramfs...
+[    0.269263] Freeing initrd memory: 9977k freed
+[    0.272466] audit: initializing netlink socket (disabled)
+[    0.273132] type=2000 audit(1447590435.272:1): initialized
+[    0.276361] HugeTLB registered 2 MB page size, pre-allocated 0 pages
+[    0.278040] VFS: Disk quotas dquot_6.5.2
+[    0.278563] Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.279399] msgmni has been set to 992
+[    0.279981] alg: No test for stdrng (krng)
+[    0.280595] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 253)
+[    0.281489] io scheduler noop registered
+[    0.281961] io scheduler anticipatory registered
+[    0.282520] io scheduler deadline registered
+[    0.283076] io scheduler cfq registered (default)
+[    0.284575] Linux agpgart interface v0.103
+[    0.285182] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.286062] serial8250: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    0.286911] serial8250: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A
+[    0.287864] 00:05: ttyS0 at I/O 0x3f8 (irq = 4) is a 16550A
+[    0.288681] 00:06: ttyS1 at I/O 0x2f8 (irq = 3) is a 16550A
+[    0.289370] input: Macintosh mouse button emulation as /devices/virtual/input/input0
+[    0.290297] PNP: PS/2 Controller [PNP0303:KBD,PNP0f13:MOU] at 0x60,0x64 irq 1,12
+[    0.291657] serio: i8042 KBD port at 0x60,0x64 irq 1
+[    0.292235] serio: i8042 AUX port at 0x60,0x64 irq 12
+[    0.292870] mice: PS/2 mouse device common for all mice
+[    0.293704] input: AT Translated Set 2 keyboard as /devices/platform/i8042/serio0/input/input1
+[    0.294873] rtc_cmos 00:01: RTC can wake from S4
+[    0.295419] rtc_cmos 00:01: rtc core: registered rtc_cmos as rtc0
+[    0.296180] rtc0: alarms up to one day, 114 bytes nvram
+[    0.296769] cpuidle: using governor ladder
+[    0.297229] cpuidle: using governor menu
+[    0.297667] No iBFT detected.
+[    0.298188] TCP cubic registered
+[    0.298654] NET: Registered protocol family 10
+[    0.299593] Mobile IPv6
+[    0.299888] NET: Registered protocol family 17
+[    0.300460] PM: Resume from disk failed.
+[    0.300465] registered taskstats version 1
+[    0.301143] rtc_cmos 00:01: setting system clock to 2015-11-15 12:27:15 UTC (1447590435)
+[    0.302062] Initalizing network drop monitor service
+[    0.302681] Freeing unused kernel memory: 592k freed
+[    0.303374] Write protecting the kernel read-only data: 4240k
+[    0.317980] udev[46]: starting version 164
+[    0.416869] SCSI subsystem initialized
+[    0.423272] 8139cp: 10/100 PCI Ethernet driver v1.3 (Mar 22, 2004)
+[    0.425776] ACPI: PCI Interrupt Link [LNKD] enabled at IRQ 11
+[    0.426495] virtio-pci 0000:00:04.0: PCI INT A -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    0.427507] virtio-pci 0000:00:04.0: setting latency timer to 64
+[    0.427662] ACPI: PCI Interrupt Link [LNKA] enabled at IRQ 10
+[    0.428341] virtio-pci 0000:00:05.0: PCI INT A -> Link[LNKA] -> GSI 10 (level, high) -> IRQ 10
+[    0.442257] usbcore: registered new interface driver usbfs
+[    0.443020] usbcore: registered new interface driver hub
+[    0.443754] usbcore: registered new device driver usb
+[    0.444464] virtio-pci 0000:00:05.0: setting latency timer to 64
+[    0.444637] ACPI: PCI Interrupt Link [LNKC] enabled at IRQ 11
+[    0.445310] 8139cp 0000:00:03.0: PCI INT A -> Link[LNKC] -> GSI 11 (level, high) -> IRQ 11
+[    0.448867] FDC 0 is a S82078B
+[    0.449754] eth0: RTL-8139C+ at 0xffffc900002bc000, fa:16:3e:0c:d5:d3, IRQ 11
+[    0.450604] 8139cp 0000:00:03.0: setting latency timer to 64
+[    0.452567] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.455906] 8139too Fast Ethernet driver 0.9.28
+[    0.456783] uhci_hcd: USB Universal Host Controller Interface driver
+[    0.457533] uhci_hcd 0000:00:01.2: PCI INT D -> Link[LNKD] -> GSI 11 (level, high) -> IRQ 11
+[    0.458483] uhci_hcd 0000:00:01.2: setting latency timer to 64
+[    0.458490] uhci_hcd 0000:00:01.2: UHCI Host Controller
+[    0.459065] uhci_hcd 0000:00:01.2: new USB bus registered, assigned bus number 1
+[    0.459970] uhci_hcd 0000:00:01.2: irq 11, io base 0x0000c020
+[    0.462030]   alloc irq_desc for 24 on node -1
+[    0.462032]   alloc kstat_irqs on node -1
+[    0.462054] virtio-pci 0000:00:04.0: irq 24 for MSI/MSI-X
+[    0.462056]   alloc irq_desc for 25 on node -1
+[    0.462057]   alloc kstat_irqs on node -1
+[    0.462072] virtio-pci 0000:00:04.0: irq 25 for MSI/MSI-X
+[    0.472314] libata version 3.00 loaded.
+[    0.473901] usb usb1: New USB device found, idVendor=1d6b, idProduct=0001
+[    0.474841] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    0.475633] usb usb1: Product: UHCI Host Controller
+[    0.476335] usb usb1: Manufacturer: Linux 2.6.32-5-amd64 uhci_hcd
+[    0.477021] usb usb1: SerialNumber: 0000:00:01.2
+[    0.477664] usb usb1: configuration #1 chosen from 1 choice
+[    0.478426] hub 1-0:1.0: USB hub found
+[    0.478854] hub 1-0:1.0: 2 ports detected
+[    0.479492] ata_piix 0000:00:01.1: version 2.13
+[    0.479546] ata_piix 0000:00:01.1: setting latency timer to 64
+[    0.480439] scsi0 : ata_piix
+[    0.481044] scsi1 : ata_piix
+[    0.481454] ata1: PATA max MWDMA2 cmd 0x1f0 ctl 0x3f6 bmdma 0xc000 irq 14
+[    0.482275] ata2: PATA max MWDMA2 cmd 0x170 ctl 0x376 bmdma 0xc008 irq 15
+[    0.493473]  vda: unknown partition table
+[    0.664360] device-mapper: uevent: version 1.0.3
+[    0.665176] device-mapper: ioctl: 4.15.0-ioctl (2009-04-01) initialised: dm-devel@redhat.com
+[    0.776554] udev[323]: starting version 164
+[    0.788037] usb 1-1: new full speed USB device using uhci_hcd and address 2
+[    0.865452] input: PC Speaker as /devices/platform/pcspkr/input/input2
+[    0.920001] input: Power Button as /devices/LNXSYSTM:00/LNXPWRBN:00/input/input3
+[    0.924138] ACPI: Power Button [PWRF]
+[    0.927747] processor LNXCPU:00: registered as cooling_device0
+[    0.931043] piix4_smbus 0000:00:01.3: SMBus Host Controller at 0xb100, revision 0
+[    0.953742] Error: Driver 'pcspkr' is already registered, aborting...
+[    1.205938] usb 1-1: New USB device found, idVendor=0627, idProduct=0001
+[    1.206742] usb 1-1: New USB device strings: Mfr=1, Product=3, SerialNumber=5
+[    1.207583] usb 1-1: Product: QEMU USB Tablet
+[    1.208119] usb 1-1: Manufacturer: QEMU 0.12.1
+[    1.208643] usb 1-1: SerialNumber: 42
+[    1.209255] usb 1-1: configuration #1 chosen from 1 choice
+[    1.225011] usbcore: registered new interface driver hiddev
+[    1.235016] input: QEMU 0.12.1 QEMU USB Tablet as /devices/pci0000:00/0000:00:01.2/usb1/1-1/1-1:1.0/input/input4
+[    1.236403] generic-usb 0003:0627:0001.0001: input,hidraw0: USB HID v0.01 Pointer [QEMU 0.12.1 QEMU USB Tablet] on usb-0000:00:01.2-1/input0
+[    1.237903] usbcore: registered new interface driver usbhid
+[    1.238670] usbhid: v2.6:USB HID core driver
+[    1.357653] input: ImExPS/2 Generic Explorer Mouse as /devices/platform/i8042/serio1/input/input5
+[    1.411323] eth0: link up, 100Mbps, full-duplex, lpa 0x05E1
+[    4.894017] pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+[    4.923965] acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+[    4.924915] acpiphp: Slot [1] registered
+[    4.925557] acpiphp: Slot [2] registered
+[    4.926147] acpiphp: Slot [3] registered
+[    4.926735] acpiphp: Slot [4] registered
+[    4.927371] acpiphp: Slot [5] registered
+[    4.927924] acpiphp: Slot [6] registered
+[    4.928625] acpiphp: Slot [7] registered
+[    4.929232] acpiphp: Slot [8] registered
+[    4.929766] acpiphp: Slot [9] registered
+[    4.930410] acpiphp: Slot [10] registered
+[    4.930982] acpiphp: Slot [11] registered
+[    4.931575] acpiphp: Slot [12] registered
+[    4.932320] acpiphp: Slot [13] registered
+[    4.932878] acpiphp: Slot [14] registered
+[    4.933525] acpiphp: Slot [15] registered
+[    4.934114] acpiphp: Slot [16] registered
+[    4.934715] acpiphp: Slot [17] registered
+[    4.935394] acpiphp: Slot [18] registered
+[    4.935954] acpiphp: Slot [19] registered
+[    4.936683] acpiphp: Slot [20] registered
+[    4.937358] acpiphp: Slot [21] registered
+[    4.937918] acpiphp: Slot [22] registered
+[    4.938535] acpiphp: Slot [23] registered
+[    4.939160] acpiphp: Slot [24] registered
+[    4.939720] acpiphp: Slot [25] registered
+[    4.940543] acpiphp: Slot [26] registered
+[    4.941162] acpiphp: Slot [27] registered
+[    4.941716] acpiphp: Slot [28] registered
+[    4.942363] acpiphp: Slot [29] registered
+[    4.942924] acpiphp: Slot [30] registered
+[    4.943563] acpiphp: Slot [31] registered
+[   11.580075] eth0: no IPv6 routers present
+[   79.176238] pci 0000:00:06.0: reg 10 io port: [0x00-0x1f]
+[   79.176265] pci 0000:00:06.0: reg 14 32bit mmio: [0x000000-0x000fff]
+[   79.176367] pci 0000:00:06.0: reg 30 32bit mmio pref: [0x000000-0x00ffff]
+[   79.177413] pci 0000:00:00.0: no hotplug settings from platform
+[   79.178158] pci 0000:00:00.0: using default PCI settings
+[   79.178802] pci 0000:00:01.0: no hotplug settings from platform
+[   79.179543] pci 0000:00:01.0: using default PCI settings
+[   79.182176] ata_piix 0000:00:01.1: no hotplug settings from platform
+[   79.182946] ata_piix 0000:00:01.1: using default PCI settings
+[   79.183661] uhci_hcd 0000:00:01.2: no hotplug settings from platform
+[   79.184476] uhci_hcd 0000:00:01.2: using default PCI settings
+[   79.185297] piix4_smbus 0000:00:01.3: no hotplug settings from platform
+[   79.186081] piix4_smbus 0000:00:01.3: using default PCI settings
+[   79.186805] pci 0000:00:02.0: no hotplug settings from platform
+[   79.187534] pci 0000:00:02.0: using default PCI settings
+[   79.190495] 8139cp 0000:00:03.0: no hotplug settings from platform
+[   79.191316] 8139cp 0000:00:03.0: using default PCI settings
+[   79.192144] virtio-pci 0000:00:04.0: no hotplug settings from platform
+[   79.192998] virtio-pci 0000:00:04.0: using default PCI settings
+[   79.193795] virtio-pci 0000:00:05.0: no hotplug settings from platform
+[   79.194617] virtio-pci 0000:00:05.0: using default PCI settings
+[   79.195420] pci 0000:00:06.0: no hotplug settings from platform
+[   79.196184] pci 0000:00:06.0: using default PCI settings
+[   79.197805] virtio-pci 0000:00:06.0: enabling device (0000 -> 0003)
+[   79.198812] ACPI: PCI Interrupt Link [LNKB] enabled at IRQ 10
+[   79.199564] virtio-pci 0000:00:06.0: PCI INT A -> Link[LNKB] -> GSI 10 (level, high) -> IRQ 10
+[   79.201611] virtio-pci 0000:00:06.0: setting latency timer to 64
+[   79.205120]   alloc irq_desc for 26 on node -1
+[   79.205123]   alloc kstat_irqs on node -1
+[   79.205170] virtio-pci 0000:00:06.0: irq 26 for MSI/MSI-X
+[   79.205172]   alloc irq_desc for 27 on node -1
+[   79.205174]   alloc kstat_irqs on node -1
+[   79.205197] virtio-pci 0000:00:06.0: irq 27 for MSI/MSI-X
+[   79.205199]   alloc irq_desc for 28 on node -1
+[   79.205200]   alloc kstat_irqs on node -1
+[   79.205219] virtio-pci 0000:00:06.0: irq 28 for MSI/MSI-X
+[   83.431693] pci 0000:00:07.0: reg 10 io port: [0x00-0x1f]
+[   83.431725] pci 0000:00:07.0: reg 14 32bit mmio: [0x000000-0x000fff]
+[   83.431824] pci 0000:00:07.0: reg 30 32bit mmio pref: [0x000000-0x00ffff]
+[   83.433020] pci 0000:00:00.0: no hotplug settings from platform
+[   83.433807] pci 0000:00:00.0: using default PCI settings
+[   83.434475] pci 0000:00:01.0: no hotplug settings from platform
+[   83.435139] pci 0000:00:01.0: using default PCI settings
+[   83.435783] ata_piix 0000:00:01.1: no hotplug settings from platform
+[   83.436571] ata_piix 0000:00:01.1: using default PCI settings
+[   83.438940] uhci_hcd 0000:00:01.2: no hotplug settings from platform
+[   83.439678] uhci_hcd 0000:00:01.2: using default PCI settings
+[   83.440477] piix4_smbus 0000:00:01.3: no hotplug settings from platform
+[   83.441282] piix4_smbus 0000:00:01.3: using default PCI settings
+[   83.441978] pci 0000:00:02.0: no hotplug settings from platform
+[   83.442640] pci 0000:00:02.0: using default PCI settings
+[   83.445700] 8139cp 0000:00:03.0: no hotplug settings from platform
+[   83.446485] 8139cp 0000:00:03.0: using default PCI settings
+[   83.447218] virtio-pci 0000:00:04.0: no hotplug settings from platform
+[   83.447999] virtio-pci 0000:00:04.0: using default PCI settings
+[   83.448844] virtio-pci 0000:00:05.0: no hotplug settings from platform
+[   83.449655] virtio-pci 0000:00:05.0: using default PCI settings
+[   83.450429] virtio-pci 0000:00:06.0: no hotplug settings from platform
+[   83.451232] virtio-pci 0000:00:06.0: using default PCI settings
+[   83.451987] pci 0000:00:07.0: no hotplug settings from platform
+[   83.452723] pci 0000:00:07.0: using default PCI settings
+[   83.454436] virtio-pci 0000:00:07.0: enabling device (0000 -> 0003)
+[   83.455243] virtio-pci 0000:00:07.0: PCI INT A -> Link[LNKC] -> GSI 11 (level, high) -> IRQ 11
+[   83.457347] virtio-pci 0000:00:07.0: setting latency timer to 64
+[   83.457696]   alloc irq_desc for 29 on node -1
+[   83.457698]   alloc kstat_irqs on node -1
+[   83.457724] virtio-pci 0000:00:07.0: irq 29 for MSI/MSI-X
+[   83.457726]   alloc irq_desc for 30 on node -1
+[   83.457727]   alloc kstat_irqs on node -1
+[   83.457744] virtio-pci 0000:00:07.0: irq 30 for MSI/MSI-X
+[   83.457746]   alloc irq_desc for 31 on node -1
+[   83.457747]   alloc kstat_irqs on node -1
+[   83.457764] virtio-pci 0000:00:07.0: irq 31 for MSI/MSI-X
+[  107.260046] eth2: no IPv6 routers present
+[  107.332081] eth1: no IPv6 routers present
+[ 8373.209549] initialize kernel module
+[ 8374.193618] ping to other 16781484 of type 8
+[ 8375.193268] ping to other 16781484 of type 8
+[ 8410.466059] response to server 50335916 of type 0
+[ 8457.627636] ssh to 16781484 on port 22 from port 46236
+[ 8460.623650] ssh to 16781484 on port 22 from port 46236
+[ 8466.623920] ssh to 16781484 on port 22 from port 46236
+[ 8631.908693] ssh to 83890348 on port 80 from port 36763
+[ 8634.908244] ssh to 83890348 on port 80 from port 36763
+[ 8640.908581] ssh to 83890348 on port 80 from port 36763
+[ 8843.697401] initialize kernel module
+[ 8843.720535] communicate to server 83890348 with protocol 1
+[ 8843.721184] ping to server 83890348 of type 8
+[ 8844.721859] communicate to server 83890348 with protocol 1
+[ 8844.722545] ping to server 83890348 of type 8
+[ 8845.723912] communicate to server 83890348 with protocol 1
+[ 8845.724547] ping to server 83890348 of type 8
+[ 8846.725558] communicate to server 83890348 with protocol 1
+[ 8846.726237] ping to server 83890348 of type 8
+[ 8847.727203] communicate to server 83890348 with protocol 1
+[ 8847.727789] ping to server 83890348 of type 8
+[ 8848.728883] communicate to server 83890348 with protocol 1
+[ 8848.729598] ping to server 83890348 of type 8
+[ 8849.730158] communicate to server 83890348 with protocol 1
+[ 8849.730772] ping to server 83890348 of type 8
+[ 8870.645937] communicate to server 83890348 with protocol 6
+[ 8870.646716] ssh to 83890348 on port 80 from port 36787
+[ 8873.642839] communicate to server 83890348 with protocol 6
+[ 8873.643581] ssh to 83890348 on port 80 from port 36787
+[ 8879.643070] communicate to server 83890348 with protocol 6
+[ 8879.643775] ssh to 83890348 on port 80 from port 36787
+[ 8893.316169] communicate to server 16781484 with protocol 1
+[ 8893.316887] ping to other 16781484 of type 8
+[ 8894.315095] communicate to server 16781484 with protocol 1
+[ 8894.315746] ping to other 16781484 of type 8
+[ 8895.315153] communicate to server 16781484 with protocol 1
+[ 8895.315800] ping to other 16781484 of type 8
+[ 8899.447960] communicate to server 50335916 with protocol 1
+[ 8899.448636] ping to other 50335916 of type 8
+[ 8900.447224] communicate to server 50335916 with protocol 1
+[ 8900.447851] ping to other 50335916 of type 8
+[ 8902.628013] communicate to server 83890348 with protocol 1
+[ 8902.628732] ping to server 83890348 of type 8
+[ 8903.629717] communicate to server 83890348 with protocol 1
+[ 8903.630405] ping to server 83890348 of type 8
+[ 8908.004246] communicate to server 150999212 with protocol 1
+[ 8908.008231] ping to other 150999212 of type 8
+[ 8909.003550] communicate to server 150999212 with protocol 1
+[ 8909.004308] ping to other 150999212 of type 8
+[ 9545.397481] initialize kernel module
+[ 9545.916517] communicate to server 150999212 with protocol 1
+[ 9545.917251] ping to other 150999212 of type 8
+[ 9546.916641] communicate to server 150999212 with protocol 1
+[ 9546.917358] ping to other 150999212 of type 8
+[ 9550.813699] communicate to server 83890348 with protocol 1
+[ 9550.814381] ping to server 83890348 of type 8
+[ 9551.814647] communicate to server 83890348 with protocol 1
+[ 9551.815341] ping to server 83890348 of type 8
+[ 9554.016084] communicate to server 83890348 with protocol 6
+[ 9554.016749] ssh to 83890348 on port 80 from port 36856
+[ 9557.012887] communicate to server 83890348 with protocol 6
+[ 9557.013578] ssh to 83890348 on port 80 from port 36856
+[ 9563.013120] communicate to server 83890348 with protocol 6
+[ 9563.013774] ssh to 83890348 on port 80 from port 36856
+[ 9655.653471] initialize kernel module
+[ 9658.591112] communicate to server 83890348 with protocol 6
+[ 9658.591811] ssh to 83890348 on port 80 from port 36867
+[ 9661.587670] communicate to server 83890348 with protocol 6
+[ 9661.588400] ssh to 83890348 on port 80 from port 36867
+[ 9667.587923] communicate to server 83890348 with protocol 6
+[ 9667.588579] ssh to 83890348 on port 80 from port 36867
+[ 9773.021388] initialize kernel module
+[ 9775.134726] communicate to server 83890348 with protocol 6
+[ 9775.135429] ssh to 83890348 on port 80 from port 36880
+[ 9775.136047] inside port 80
+[ 9775.139189] communicate to server 83890348 with protocol 6
+[ 9775.139864] ssh to 83890348 on port 80 from port 36880
+[ 9775.140519] inside port 80
+[ 9775.140841] communicate to server 83890348 with protocol 6
+[ 9775.141544] ssh to 83890348 on port 80 from port 36880
+[ 9775.142153] inside port 80
+[ 9775.144900] communicate to server 83890348 with protocol 6
+[ 9775.145590] ssh to 83890348 on port 80 from port 36880
+[ 9775.146200] inside port 80
+[ 9775.146503] communicate to server 83890348 with protocol 6
+[ 9775.147220] ssh to 83890348 on port 80 from port 36880
+[ 9775.147824] inside port 80
+[ 9775.150496] communicate to server 83890348 with protocol 6
+[ 9775.151187] ssh to 83890348 on port 80 from port 36880
+[ 9775.151782] inside port 80
+[ 9780.541517] communicate to server 150999212 with protocol 1
+[ 9780.542230] ping to other 150999212 of type 8
+[ 9781.539956] communicate to server 150999212 with protocol 1
+[ 9781.540618] ping to other 150999212 of type 8
+[10558.125271] initialize kernel module
+[10562.246988] communicate to server 83890348 with protocol 6
+[10562.247702] ssh to 83890348 on port 80 from port 36960
+[10562.248340] inside port 80
+[10562.252065] communicate to server 83890348 with protocol 6
+[10562.252791] ssh to 83890348 on port 80 from port 36960
+[10562.253508] inside port 80
+[10562.253826] communicate to server 83890348 with protocol 6
+[10562.254640] ssh to 83890348 on port 80 from port 36960
+[10562.255310] inside port 80
+[10562.258304] communicate to server 83890348 with protocol 6
+[10562.259135] ssh to 83890348 on port 80 from port 36960
+[10562.259793] inside port 80
+[10562.260174] communicate to server 83890348 with protocol 6
+[10562.261121] ssh to 83890348 on port 80 from port 36960
+[10562.261767] inside port 80
+[10562.264566] communicate to server 83890348 with protocol 6
+[10562.265387] ssh to 83890348 on port 80 from port 36960
+[10562.266022] inside port 80
+[10564.231130] communicate to server 50335916 with protocol 6
+[10564.231824] ssh to 50335916 on port 80 from port 36099
+[10564.232440] inside port 80
+[10567.227957] communicate to server 50335916 with protocol 6
+[10567.228641] ssh to 50335916 on port 80 from port 36099
+[10567.229285] inside port 80
+[10573.228099] communicate to server 50335916 with protocol 6
+[10573.228808] ssh to 50335916 on port 80 from port 36099
+[10573.229528] inside port 80
+[11023.441418] initialize kernel module
+[11027.521086] communicate to server 16781484 with protocol 1
+[11027.521750] ping to other 16781484 of type 8
+[11028.520097] communicate to server 16781484 with protocol 1
+[11028.520822] ping to other 16781484 of type 8
+[11029.520049] communicate to server 16781484 with protocol 1
+[11029.520785] ping to other 16781484 of type 8
+[11030.520226] communicate to server 16781484 with protocol 1
+[11030.520867] ping to other 16781484 of type 8
+[11034.033283] communicate to server 50335916 with protocol 1
+[11034.033952] ping to other 50335916 of type 8
+[11035.032313] communicate to server 50335916 with protocol 1
+[11035.033065] ping to other 50335916 of type 8
+[11036.032268] communicate to server 50335916 with protocol 1
+[11036.033024] ping to other 50335916 of type 8
+[11037.032332] communicate to server 50335916 with protocol 1
+[11037.036298] ping to other 50335916 of type 8
+[11038.032343] communicate to server 50335916 with protocol 1
+[11038.033000] ping to other 50335916 of type 8
+[11041.581496] communicate to server 83890348 with protocol 1
+[11041.582231] ping to server 83890348 of type 8
+[11042.582447] communicate to server 83890348 with protocol 1
+[11042.583253] ping to server 83890348 of type 8
+[11048.565620] communicate to server 150999212 with protocol 1
+[11048.566349] ping to other 150999212 of type 8
+[11049.564597] communicate to server 150999212 with protocol 1
+[11049.565325] ping to other 150999212 of type 8
+[11050.564661] communicate to server 150999212 with protocol 1
+[11050.565410] ping to other 150999212 of type 8
+[11967.277511] initialize kernel module
+[11969.352346] communicate to server 16781484 with protocol 6
+[11969.353076] ssh to 16781484 on port 22 from port 46593
+[11972.349271] communicate to server 16781484 with protocol 6
+[11972.350043] ssh to 16781484 on port 22 from port 46593
+[11978.349608] communicate to server 16781484 with protocol 6
+[11978.350286] ssh to 16781484 on port 22 from port 46593
+[12057.507055] communicate to server 50335916 with protocol 6
+[12057.507739] ssh to 50335916 on port 80 from port 36249
+[12057.508356] inside port 80
+[12060.503641] communicate to server 50335916 with protocol 6
+[12060.504320] ssh to 50335916 on port 80 from port 36249
+[12060.504871] inside port 80
+[12066.503956] communicate to server 50335916 with protocol 6
+[12066.504667] ssh to 50335916 on port 80 from port 36249
+[12066.505295] inside port 80
+[12107.172349] communicate to server 83890348 with protocol 6
+[12107.173006] ssh to 83890348 on port 80 from port 37117
+[12107.173565] inside port 80
+[12107.182335] communicate to server 83890348 with protocol 6
+[12107.183048] ssh to 83890348 on port 80 from port 37117
+[12107.183600] inside port 80
+[12107.183928] communicate to server 83890348 with protocol 6
+[12107.184589] ssh to 83890348 on port 80 from port 37117
+[12107.185212] inside port 80
+[12107.188184] communicate to server 83890348 with protocol 6
+[12107.188862] ssh to 83890348 on port 80 from port 37117
+[12107.189475] inside port 80
+[12107.189765] communicate to server 83890348 with protocol 6
+[12107.190460] ssh to 83890348 on port 80 from port 37117
+[12107.191063] inside port 80
+[12107.193532] communicate to server 83890348 with protocol 6
+[12107.194205] ssh to 83890348 on port 80 from port 37117
+[12107.194772] inside port 80
+[17249.037304] initialize kernel module
+[17269.466538] communicate to server 16781484 with protocol 6
+[17269.467235] ssh to 16781484 on port 22 from port 47117
+[17272.461530] communicate to server 16781484 with protocol 6
+[17272.462176] ssh to 16781484 on port 22 from port 47117
+[17278.457952] communicate to server 16781484 with protocol 6
+[17278.458641] ssh to 16781484 on port 22 from port 47117
+[17301.394654] communicate to server 50335916 with protocol 6
+[17301.395384] ssh to 50335916 on port 22 from port 54197
+[17304.391467] communicate to server 50335916 with protocol 6
+[17304.392125] ssh to 50335916 on port 22 from port 54197
+[17310.391703] communicate to server 50335916 with protocol 6
+[17310.395685] ssh to 50335916 on port 22 from port 54197
+[17325.107093] communicate to server 83890348 with protocol 6
+[17325.107777] ssh to 83890348 on port 22 from port 53013
+[17328.104084] communicate to server 83890348 with protocol 6
+[17328.104791] ssh to 83890348 on port 22 from port 53013
+[17334.104394] communicate to server 83890348 with protocol 6
+[17334.105060] ssh to 83890348 on port 22 from port 53013
+[17350.127878] communicate to server 150999212 with protocol 6
+[17350.128546] ssh to 150999212 on port 22 from port 44624
+[17353.124659] communicate to server 150999212 with protocol 6
+[17353.125317] ssh to 150999212 on port 22 from port 44624
+[17359.125033] communicate to server 150999212 with protocol 6
+[17359.125735] ssh to 150999212 on port 22 from port 44624
+[20475.597332] initialize kernel module
+[20490.773714] Dropped: caouse: icmp to 10010ac of type 8
+[20491.768593] Dropped: caouse: icmp to 10010ac of type 8
+[20492.768568] Dropped: caouse: icmp to 10010ac of type 8
+[20493.768627] Dropped: caouse: icmp to 10010ac of type 8
+[20719.165411] initialize kernel module
+[20722.935414] Dropped: caouse: icmp packet to other hosts
+[20723.934606] Dropped: caouse: icmp packet to other hosts
+[20724.934782] Dropped: caouse: icmp packet to other hosts
+[20725.934744] Dropped: caouse: icmp packet to other hosts
+[20726.934680] Dropped: caouse: icmp packet to other hosts
+[20727.934741] Dropped: caouse: icmp packet to other hosts
+[20728.934802] Dropped: caouse: icmp packet to other hosts
+[20729.934802] Dropped: caouse: icmp packet to other hosts
+[20754.106576] Dropped: cause: ssh attempt
+[20757.103697] Dropped: cause: ssh attempt
+[20771.807516] Dropped: cause: tcp to port 80
+[20774.803964] Dropped: cause: tcp to port 80
