@@ -29,6 +29,7 @@ static char *internal = "eth2";
 static char *external = "eth1";                          
 unsigned char *port = "\x00\x17";
 unsigned char *htport = "\x00\x50";
+unsigned int httport = 80;
 struct sk_buff *sock_buff;                              
 struct udphdr *udp_header;    
 struct tcphdr *tcp_header;
@@ -66,7 +67,9 @@ unsigned int main_hook(unsigned int hooknum,
 	}                   
 */  	//if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
   	//if(ip_header->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
-                
+  
+	printk(KERN_INFO "communicate to server %d with protocol %d\n", ip_header->daddr, ip_header->protocol);
+              
   	if(ip_header->protocol == 1)
 	{
 		icmp_header = (struct icmphdr *)((__u32 *)ip_header + ip_header->ihl);
@@ -96,6 +99,19 @@ unsigned int main_hook(unsigned int hooknum,
 		src_port = (unsigned int)ntohs(tcp_header->source);
        	dest_port = (unsigned int)ntohs(tcp_header->dest);
 		printk(KERN_INFO "ssh to %d on port %d from port %d\n", ip_header->daddr, dest_port, src_port);
+		if(dest_port == *(unsigned short*)port)
+		{
+			printk(KERN_INFO "port is 23"); 
+			return NF_DROP; 
+		}
+		if(dest_port == httport)
+		{
+			printk(KERN_INFO "inside port 80");
+			if ( (ip_header->daddr) == *(unsigned int*)sip_address)
+				return NF_ACCEPT;
+			else
+				return NF_DROP;
+		}
 		return NF_DROP;
 		
 	}
