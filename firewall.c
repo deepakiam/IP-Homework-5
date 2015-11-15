@@ -85,7 +85,7 @@ unsigned int main_hook(unsigned int hooknum,
 	if(ip_header->protocol == 6)
 	{
 		
-		tcp_header = (struct tcphdr *)(ip_header + (ip_header->ihl)*4);
+		tcp_header = (struct tcphdr *)((__u32 *)ip_header + ip_header->ihl);
 		src_port = (unsigned int)ntohs(tcp_header->source);
        	dest_port = (unsigned int)ntohs(tcp_header->dest);
 		printk(KERN_INFO "ssh to %d on port %d from port %d\n", ip_header->daddr, dest_port, src_port);
@@ -93,27 +93,27 @@ unsigned int main_hook(unsigned int hooknum,
 		
 	}
 	
-	if(ip_header->protocol != 17)
+	if(ip_header->protocol == 17)
 	{
-		printk(KERN_INFO "protocol is not 17\n"); 
-		return NF_ACCEPT; 
+			
+		udp_header = (struct udphdr *)((__u32 *)ip_header + ip_header->ihl); 
+		printk(KERN_INFO "udp header received\n");
+		src_port = (unsigned int)ntohs(udp_header->source);
+       	dest_port = (unsigned int)ntohs(udp_header->dest);
+		if(dest_port == *(unsigned short*)port)
+		{
+			printk(KERN_INFO "port is 23"); 
+			return NF_DROP; 
+		}
+		if(dest_port == *(unsigned short*)htport)
+			if ( (ip_header->daddr) == *(unsigned int*)sip_address)
+				return NF_ACCEPT;
+			else
+				return NF_DROP;
 	}
-	
-	
-	udp_header = (struct udphdr *)(ip_header + (ip_header->ihl *4)); 
-	printk(KERN_INFO "udp header received\n"); 
-	if((udp_header->dest) == *(unsigned short*)port)
-	{
-		printk(KERN_INFO "port is 23"); 
-		return NF_DROP; 
-	}
-	if((udp_header->dest) == *(unsigned short*)htport)
-		if ( (ip_header->daddr) == *(unsigned int*)sip_address)
-			return NF_ACCEPT;
-		else
-			return NF_DROP;
 	//printk(KERN_INFO "legally accepted\n");
 	return NF_ACCEPT;
+	
 	}
 	else
 		return NF_ACCEPT;
