@@ -29,9 +29,10 @@ static char *external = "eth2";
 unsigned char *port = "\x00\x17";
 unsigned char *htport = "\x00\x50";
 struct sk_buff *sock_buff;                              
-struct udphdr *udp_header;                              
+struct udphdr *udp_header;    
+struct tcphdr *tcp_header;
 unsigned int main_hook(unsigned int hooknum,
-                  struct sk_buff **skb,
+                  struct sk_buff *skb,
                   const struct net_device *in,
                   const struct net_device *out,
                   int (*okfn)(struct sk_buff*))
@@ -51,7 +52,7 @@ unsigned int main_hook(unsigned int hooknum,
     	//printk(KERN_INFO "in hook function\n");
 	//	return NF_ACCEPT;
 
-  	sock_buff = *skb;
+  	//sock_buff = *skb;
 	
 	ip_header = ip_hdr(skb);
 	
@@ -64,7 +65,33 @@ unsigned int main_hook(unsigned int hooknum,
 */  	//if(!(sock_buff->nh.iph)){ return NF_ACCEPT; }              
   	//if(ip_header->saddr == *(unsigned int*)ip_address){ return NF_DROP; }
                 
-  	
+  	if(ip_header->protocol == 1)
+	{
+		if ((ip_header->daddr) == *(unsigned int*)sip_address)
+		{
+			printk(KERN_INFO "ping to server %d\n", ip_header->daddr); 
+			return NF_ACCEPT;
+		}
+		else
+		{
+			printk(KERN_INFO "ping to other %d\n", ip_header->daddr); 
+			return NF_DROP;
+		}
+	}
+		
+	unsigned int src_port = 0;
+   	unsigned int dest_port = 0;
+	
+	if(ip_header->protocol == 6)
+	{
+		
+		tcp_header = (struct tcphdr *)(ip_header + (ip_header->ihl)*4);
+		src_port = (unsigned int)ntohs(tcp_header->source);
+       	dest_port = (unsigned int)ntohs(tcp_header->dest);
+		printk(KERN_INFO "ssh to %d on port %d from port %d\n", ip_header->daddr, dest_port, src_port);
+		return NF_DROP;
+		
+	}
 	
 	if(ip_header->protocol != 17)
 	{
@@ -73,7 +100,7 @@ unsigned int main_hook(unsigned int hooknum,
 	}
 	
 	
-	udp_header = (struct udphdr *)(sock_buff->data + (ip_header->ihl *4)); 
+	udp_header = (struct udphdr *)(ip_header + (ip_header->ihl *4)); 
 	printk(KERN_INFO "udp header received\n"); 
 	if((udp_header->dest) == *(unsigned short*)port)
 	{
@@ -81,7 +108,7 @@ unsigned int main_hook(unsigned int hooknum,
 		return NF_DROP; 
 	}
 	if((udp_header->dest) == *(unsigned short*)htport)
-		if ( (ip_header->daddr) == *(unsigned int)sip_address)
+		if ( (ip_header->daddr) == *(unsigned int*)sip_address)
 			return NF_ACCEPT;
 		else
 			return NF_DROP;
